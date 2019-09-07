@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/mmcc007/fake_processor_manager.svg?branch=master)](https://travis-ci.com/mmcc007/fake_processor_manager)
-[![codecov](https://codecov.io/gh/mmcc007/fake_processor_manager/branch/master/graph/badge.svg)](https://codecov.io/gh/mmcc007/fake_processor_manager)
+[![Build Status](https://travis-ci.com/mmcc007/fake_process_manager.svg?branch=master)](https://travis-ci.com/mmcc007/fake_process_manager)
+[![codecov](https://codecov.io/gh/mmcc007/fake_process_manager/branch/master/graph/badge.svg)](https://codecov.io/gh/mmcc007/fake_process_manager)
 
 A library for Dart developers.
 
