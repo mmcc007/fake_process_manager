@@ -157,10 +157,14 @@ void main() {
         Directory(testDir).deleteSync(recursive: true);
       }
       Directory(testDir).createSync(recursive: true);
-      processManager.calls = [
+      final calls = [
         Call('my command', null, sideEffects: () => File(newFile).createSync())
       ];
+      processManager.calls = calls;
+      final key = calls[0].command;
+      final ProcessResult result = processManager.runSync(key.split(' '));
       expect(File(newFile).existsSync(), isTrue);
+      processManager.verifyCalls();
     });
   });
 }

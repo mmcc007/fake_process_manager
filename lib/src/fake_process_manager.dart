@@ -65,7 +65,8 @@ class FakeProcessManager extends Mock implements ProcessManager {
   ProcessResult _popResult(List<String> command) {
     // 1. Pop off call list
     // 2. Confirm correct command
-    // 3. Return process result
+    // 3. Run side effects
+    // 4. Return process result
     final String key = command.join(' ');
     expect(calls, isNotEmpty,
         reason: 'All calls have been executed. Add call for command \'$key\'');
@@ -73,6 +74,7 @@ class FakeProcessManager extends Mock implements ProcessManager {
     expect(call.command, equals(key),
         reason:
             'Incorrect call in sequence. Add \'$key\' to calls before \'${call.command}\' at position ${_origCalls.length - calls.length}');
+    if (call.sideEffects != null) call.sideEffects();
     return call.result;
   }
 
@@ -222,9 +224,7 @@ class Call {
   final Function sideEffects;
 
   Call(this.command, ProcessResult result, {this.sideEffects})
-      : this.result = result ?? ProcessResult(0, 0, '', '') {
-    if (sideEffects != null) sideEffects();
-  }
+      : this.result = result ?? ProcessResult(0, 0, '', '');
 
   @override
   String toString() {
