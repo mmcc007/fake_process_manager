@@ -219,12 +219,15 @@ class StringStreamConsumer implements StreamConsumer<List<int>> {
 class Call {
   final String command;
   final ProcessResult result;
+  final Function sideEffects;
 
-  Call(this.command, ProcessResult result)
-      : this.result = result ?? ProcessResult(0, 0, '', '');
+  Call(this.command, ProcessResult result, {this.sideEffects})
+      : this.result = result ?? ProcessResult(0, 0, '', '') {
+    if (sideEffects != null) sideEffects();
+  }
 
   @override
   String toString() {
-    return 'call: $command';
+    return 'call: command: $command, sideEffects: $sideEffects';
   }
 }

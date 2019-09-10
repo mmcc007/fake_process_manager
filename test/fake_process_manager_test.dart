@@ -149,5 +149,18 @@ void main() {
 //      final key = calls[1].command;
 //      processManager.runSync(key.split(' '));
     });
+
+    test('side effects', () {
+      final testDir = '/tmp/test_fakeProcessManager';
+      final newFile = '$testDir/newFile.txt';
+      if (Directory(testDir).existsSync()) {
+        Directory(testDir).deleteSync(recursive: true);
+      }
+      Directory(testDir).createSync(recursive: true);
+      processManager.calls = [
+        Call('my command', null, sideEffects: () => File(newFile).createSync())
+      ];
+      expect(File(newFile).existsSync(), isTrue);
+    });
   });
 }
