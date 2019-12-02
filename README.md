@@ -1,3 +1,4 @@
+[![pub package](https://img.shields.io/pub/v/fake_process_manager.svg)](https://pub.dartlang.org/packages/fake_process_manager) 
 [![Build Status](https://travis-ci.com/mmcc007/fake_process_manager.svg?branch=master)](https://travis-ci.com/mmcc007/fake_process_manager)
 [![codecov](https://codecov.io/gh/mmcc007/fake_process_manager/branch/master/graph/badge.svg)](https://codecov.io/gh/mmcc007/fake_process_manager)
 
