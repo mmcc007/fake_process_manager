@@ -1,17 +1,15 @@
 name: fake_process_manager
 description: Process Manager for faking processes in tests. Taken from Flutter Tools.
-version: 0.1.0+1
+version: 0.2.0
 homepage: https://github.com/mmcc007/fake_process_manager
 author: Maurice McCabe <mmcc007@gmail.com>
 
 environment:
-  sdk: '>=2.4.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 
 dependencies:
-  process: ^3.0.9
-  tool_base: ^1.9.5+3
-#  tool_base:
-#    path: ../tool_base
+  process: ^4.0.0-nullsafety.2
+  tool_base: ^2.0.0
   mockito: ^4.1.0
   test: ^1.6.0
 dev_dependencies:
