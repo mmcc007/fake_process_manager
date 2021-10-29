@@ -12,6 +12,7 @@ doc/api/
 
 # Android Studio
 .idea/
+*.iml
 
 # Coverage
 coverage/

@@ -8,8 +8,8 @@ import 'package:tool_base_test/tool_base_test.dart';
 
 import 'call_process.dart';
 
-main() {
-  FakeProcessManager fakeProcessManager;
+void main() {
+  var fakeProcessManager = FakeProcessManager();
 
   setUp(() async {
     fakeProcessManager = FakeProcessManager();
@@ -17,7 +17,7 @@ main() {
 
   testUsingContext('test', () {
     final cmd = 'date';
-    final cmdResult = 'todays date';
+    final cmdResult = "today's date";
     fakeProcessManager.calls = [Call(cmd, ProcessResult(0, 0, cmdResult, ''))];
     final result = runCmd(<String>[cmd]);
     expect(result, equals(cmdResult));
