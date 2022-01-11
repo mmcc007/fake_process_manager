@@ -2,7 +2,6 @@
 
 import 'package:fake_process_manager/fake_process_manager.dart';
 import 'package:process/process.dart';
-import 'package:test/test.dart';
 import 'package:tool_base/tool_base.dart';
 import 'package:tool_base_test/tool_base_test.dart';
 
