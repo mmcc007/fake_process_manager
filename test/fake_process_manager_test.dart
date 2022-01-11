@@ -10,8 +10,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('fake process manager', () {
-    FakeProcessManager processManager;
-    final List<String> stdinCaptured = <String>[];
+    var processManager = FakeProcessManager();
+    final stdinCaptured = <String>[];
 
     void _captureStdin(String item) {
       stdinCaptured.add(item);
@@ -33,8 +33,8 @@ void main() {
       processManager.calls = calls;
       for (var call in calls) {
         final key = call.command;
-        final Process process = await processManager.start(key.split(' '));
-        String output = '';
+        final process = await processManager.start(key.split(' '));
+        var output = '';
         process.stdout.listen((List<int> item) {
           output += utf8.decode(item);
         });
@@ -54,7 +54,7 @@ void main() {
       processManager.calls = calls;
       for (var call in calls) {
         final key = call.command;
-        final ProcessResult result = await processManager.run(key.split(' '));
+        final result = await processManager.run(key.split(' '));
         expect(result.stdout, equals(call.result.stdout));
       }
       processManager.verifyCalls();
@@ -70,7 +70,7 @@ void main() {
       processManager.calls = calls;
       for (var call in calls) {
         final key = call.command;
-        final ProcessResult result = processManager.runSync(key.split(' '));
+        final result = processManager.runSync(key.split(' '));
         expect(result.stdout, equals(call.result.stdout));
       }
       processManager.verifyCalls();
@@ -86,12 +86,12 @@ void main() {
       processManager.calls = calls;
       for (var call in calls) {
         final key = call.command;
-        final Process process = await processManager.start(key.split(' '));
-        String output = '';
+        final process = await processManager.start(key.split(' '));
+        var output = '';
         process.stdout.listen((List<int> item) {
           output += utf8.decode(item);
         });
-        final String testInput = '${call.result.stdout} input';
+        final testInput = '${call.result.stdout} input';
         process.stdin.add(testInput.codeUnits);
         await process.exitCode;
         expect(output, equals(call.result.stdout));
@@ -102,7 +102,7 @@ void main() {
   });
 
   group('additional fake process manager tests', () {
-    FakeProcessManager processManager;
+    var processManager = FakeProcessManager();
 
     setUp(() async {
       processManager = FakeProcessManager();
@@ -118,7 +118,7 @@ void main() {
       processManager.calls = calls;
       for (var call in calls) {
         final key = call.command;
-        final ProcessResult result = processManager.runSync(key.split(' '));
+        final result = processManager.runSync(key.split(' '));
         expect(result.stdout, equals(call.result.stdout));
       }
       processManager.verifyCalls();
@@ -162,7 +162,7 @@ void main() {
       ];
       processManager.calls = calls;
       final key = calls[0].command;
-      final ProcessResult result = processManager.runSync(key.split(' '));
+      processManager.runSync(key.split(' '));
       expect(File(newFile).existsSync(), isTrue);
       processManager.verifyCalls();
     });
